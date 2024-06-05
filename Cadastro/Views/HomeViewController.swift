@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
         button.addTarget(self, action: #selector(confirmedFieldsButton), for: .touchUpInside)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background
@@ -88,32 +88,32 @@ class HomeViewController: UIViewController {
         return textField
     }
     
-        // Lógica para a Toobar do birthDate
-       private func createToolbar() -> UIToolbar {
-            //toobar
-            let toolbar = UIToolbar()
-            toolbar.sizeToFit()
-            //Done button
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-            toolbar.setItems([doneButton], animated: true)
-            return toolbar
-        }
-        
-       private func createDatePicker() {
-            datePicker.preferredDatePickerStyle = .wheels
-            datePicker.datePickerMode = .date
-            birthTextField.inputView = datePicker
-            birthTextField.inputAccessoryView = createToolbar()
-        }
-        
-       @objc func donePressed() {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .none
-            dateFormatter.locale = Locale(identifier: "pt_BR")
-            birthTextField.text = dateFormatter.string(from: datePicker.date)
-            view.endEditing(true)
-        }
+    // Lógica para a Toobar do birthDate
+    private func createToolbar() -> UIToolbar {
+        //toobar
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        //Done button
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneButton], animated: true)
+        return toolbar
+    }
+    
+    private func createDatePicker() {
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        birthTextField.inputView = datePicker
+        birthTextField.inputAccessoryView = createToolbar()
+    }
+    
+    @objc func donePressed() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "pt_BR")
+        birthTextField.text = dateFormatter.string(from: datePicker.date)
+        view.endEditing(true)
+    }
     
     //Validar todos os campos preenchidos
     private func validadeFields() -> Bool {
@@ -128,7 +128,7 @@ class HomeViewController: UIViewController {
             present(alertConfirmButton, animated: true, completion: nil)
         }
     }
- 
+    
 }
 #Preview {
     HomeViewController()

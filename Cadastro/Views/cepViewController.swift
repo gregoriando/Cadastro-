@@ -4,17 +4,21 @@ class cepViewController: UIViewController {
     
     //uiComponents
     private var service = ZipCodeService()
-    
-    private lazy var alertConfirmButton: UIAlertController = {
-        let alert = UIAlertController(title: "Alerta", message: "Por Favor Preencha todos os Campos", preferredStyle: .alert)
-        
-        let Ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(Ok)
-        return alert
-    }()
+    private lazy var zipcodeLabel = setupLabel(text: "CEP: ")
+    private lazy var streetcodeLabel = setupLabel(text: "Rua: ")
+    private lazy var numberLabel = setupLabel(text: "Número: ")
+    private lazy var neighborhoodLabel = setupLabel(text: "Bairro: ")
+    private lazy var cityLabel = setupLabel(text: "Cidade: ")
+    private lazy var stateLabel = setupLabel(text: "Estado: ")
+    private lazy var zipcodeTextField = setupTextField(placeHolder: "Digite o Cep")
+    private lazy var streetTextField = setupTextField(placeHolder: "Digite a Rua")
+    private lazy var numberTextField = setupTextField(placeHolder: "Digite o Número e o complemento se houver")
+    private lazy var neighborhoodTextField = setupTextField(placeHolder: "Digito o Bairro")
+    private lazy var cityTextField = setupTextField(placeHolder: "Digite a Cidade")
+    private lazy var stateTextField = setupTextField(placeHolder: "Digite o Estado")
     
     private lazy var zipcodeStack: UIStackView = {
-        let stack = UIStackView()
+        let stack = UIStackView(arrangedSubviews: [zipcodeLabel, zipcodeTextField,streetcodeLabel, streetTextField, numberLabel, numberTextField,neighborhoodLabel,neighborhoodTextField,cityLabel,cityTextField,stateLabel,stateTextField])
         stack.axis = .vertical
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillProportionally
@@ -22,65 +26,16 @@ class cepViewController: UIViewController {
         return stack
     }()
     
-    private lazy var zipcodeLabel: UILabel = {
-        let label = setupLabel(text: "CEP: ")
-        return label
-    }()
     
-    private lazy var zipcodeTextField: UITextField = {
-        let textfield = setupTextFiel(placeHolder: "Digite o Cep")
-        textfield.addTarget(self, action: #selector(autoComplete), for: .editingChanged)
-        return textfield
-    }()
     
-    private lazy var streetcodeLabel: UILabel = {
-        let label = setupLabel(text: "Rua: ")
-        return label
-    }()
     
-    private lazy var streetTextField: UITextField = {
-        let textfield = setupTextFiel(placeHolder: "Digite a rua")
-        return textfield
-    }()
     
-    private lazy var numberLabel: UILabel = {
-        let label = setupLabel(text: "Numero: ")
-        return label
-    }()
-    
-    private lazy var numberTextField: UITextField = {
-        let textfield = setupTextFiel(placeHolder: "Digite o complemento")
-        return textfield
-    }()
-    
-    private lazy var neighborhoodLabel: UILabel = {
-        let label = setupLabel(text: "Bairro: ")
-        return label
-    }()
-    
-    private lazy var neighborhoodTextField: UITextField = {
-        let textfield = setupTextFiel(placeHolder: "Digite o bairro")
-        return textfield
-    }()
-    
-    private lazy var cityLabel: UILabel = {
-        let label = setupLabel(text: "Cidade: ")
-        return label
-    }()
-    
-    private lazy var cityTextField: UITextField = {
-        let textfield = setupTextFiel(placeHolder: "Digite a cidade")
-        return textfield
-    }()
-    
-    private lazy var stateLabel: UILabel = {
-        let label = setupLabel(text: "Estado: ")
-        return label
-    }()
-    
-    private lazy var stateTextField: UITextField = {
-        let textfield = setupTextFiel(placeHolder: "Digite o estado")
-        return textfield
+    private lazy var alertConfirmButton: UIAlertController = {
+        let alert = UIAlertController(title: "Alerta", message: "Por Favor Preencha todos os Campos", preferredStyle: .alert)
+        
+        let Ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(Ok)
+        return alert
     }()
     
     private lazy var confirmButton: UIButton = {
@@ -103,23 +58,11 @@ class cepViewController: UIViewController {
         navigationItem.hidesBackButton = true
         addSubviews()
         setupConstraints()
-       // zipcodeTextField.addTarget(self, action: #selector(zipcodeTextFieldDidiChange), for: .editingChanged)
+        zipcodeTextField.addTarget(self, action: #selector(autoComplete), for: .editingChanged)
     }
     
     private func addSubviews(){
         view.addSubview(zipcodeStack)
-        zipcodeStack.addArrangedSubview(zipcodeLabel)
-        zipcodeStack.addArrangedSubview(zipcodeTextField)
-        zipcodeStack.addArrangedSubview(streetcodeLabel)
-        zipcodeStack.addArrangedSubview(streetTextField)
-        zipcodeStack.addArrangedSubview(numberLabel)
-        zipcodeStack.addArrangedSubview(numberTextField)
-        zipcodeStack.addArrangedSubview(neighborhoodLabel)
-        zipcodeStack.addArrangedSubview(neighborhoodTextField)
-        zipcodeStack.addArrangedSubview(cityLabel)
-        zipcodeStack.addArrangedSubview(cityTextField)
-        zipcodeStack.addArrangedSubview(stateLabel)
-        zipcodeStack.addArrangedSubview(stateTextField)
         view.addSubview(confirmButton)
     }
     private func setupConstraints() {
@@ -142,7 +85,7 @@ class cepViewController: UIViewController {
         return label
     }
     
-    private func setupTextFiel(placeHolder: String) -> UITextField {
+    private func setupTextField(placeHolder: String) -> UITextField {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = placeHolder
@@ -156,6 +99,7 @@ class cepViewController: UIViewController {
     private func validadeFields() -> Bool {
         guard let zipcode = zipcodeTextField.text , !zipcode.isEmpty,
               let street = streetTextField.text, !street.isEmpty,
+              let number = numberTextField.text, !number.isEmpty,
               let neighborhood = neighborhoodLabel.text, !neighborhood.isEmpty,
               let city = cityTextField.text, !city.isEmpty,
               let state = stateTextField.text, !state.isEmpty else {
@@ -176,7 +120,6 @@ class cepViewController: UIViewController {
     //fetch cep
     private func fetchCep() async {
         guard let zipCode = zipcodeTextField.text else {return}
-        
         do {
             let zipCodeInfo = try await service.getZipCodes(zipCode: zipCode)
             streetTextField.text =  zipCodeInfo.street

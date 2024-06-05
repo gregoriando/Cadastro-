@@ -31,7 +31,7 @@ struct ZipCodeService {
             let decoder = JSONDecoder()
             let zipCodeInfo = try decoder.decode(ZipCodeInfo.self, from: data)
             return zipCodeInfo
-  
+            
         }catch {
             throw ZipCodeServiceError.decodingError
         }
