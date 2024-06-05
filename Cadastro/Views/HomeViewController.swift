@@ -6,16 +6,22 @@ class HomeViewController: UIViewController {
     
     let datePicker = UIDatePicker()
     
+    private lazy var nameLabel = setupLabel(text: "Nome: ")
+    private lazy var emailLabel = setupLabel(text: "Email: ")
+    private lazy var birthDayLabel = setupLabel(text: "Data de Nascimento: ")
+    private lazy var nameTextField = setupTextField(placeHolder: "Digite Seu Nome Completo")
+    private lazy var emailTextField = setupTextField(placeHolder: "Digite Seu Email")
+    private lazy var birthTextField = setupTextField(placeHolder: "Selecione Sua Data de Nascimento")
+    
     private lazy var alertConfirmButton: UIAlertController = {
         let alert = UIAlertController(title: "Alerta", message: "Por Favor Preencha todos os Campos", preferredStyle: .alert)
-        
         let Ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(Ok)
         return alert
     }()
     
     private lazy var stackView: UIStackView = {
-        let stack = UIStackView()
+        let stack = UIStackView(arrangedSubviews: [nameLabel, nameTextField,emailLabel, emailTextField, birthDayLabel, birthTextField])
         stack.axis = .vertical
         stack.spacing = 5
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -23,68 +29,6 @@ class HomeViewController: UIViewController {
         return stack
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Nome: "
-        label.textAlignment = .left
-        label.textColor = .white
-        return label
-    }()
-    
-    private lazy var emailLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Email: "
-        label.textAlignment = .left
-        label.textColor = .white
-        return label
-    }()
-    
-    private lazy var birthDaylLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Data de Nascimento: "
-        label.textAlignment = .left
-        label.textColor = .white
-        return label
-    }()
-    
-    
-    private lazy var nameTextField: UITextField = {
-        let textfield = UITextField(frame: .zero)
-        textfield.translatesAutoresizingMaskIntoConstraints = false
-        textfield.placeholder = "Digite Seu Nome Completo"
-        textfield.backgroundColor = .white
-        textfield.textColor = .black
-        textfield.borderStyle = .roundedRect
-        textfield.font = UIFont.systemFont(ofSize: 15)
-        return textfield
-    }()
-    
-    private lazy var emailTextField: UITextField = {
-        let textfield = UITextField(frame: .zero)
-        textfield.translatesAutoresizingMaskIntoConstraints = false
-        textfield.keyboardType = .emailAddress
-        textfield.placeholder = "Digite Seu Email"
-        textfield.backgroundColor = .white
-        textfield.textColor = .black
-        textfield.borderStyle = .roundedRect
-        textfield.font = UIFont.systemFont(ofSize: 15)
-        return textfield
-    }()
-    
-    private lazy var birthTextField: UITextField = {
-        let textfiled = UITextField(frame: .zero)
-        textfiled.translatesAutoresizingMaskIntoConstraints = false
-        textfiled.placeholder = "Selecione Sua Data de Nascimento"
-        textfiled.backgroundColor = .white
-        textfiled.textColor = .black
-        textfiled.borderStyle = .roundedRect
-        textfiled.layer.cornerRadius = 50
-        textfiled.font = UIFont.systemFont(ofSize: 15)
-        return textfiled
-    }()
     private lazy var confirmButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -109,12 +53,6 @@ class HomeViewController: UIViewController {
     
     private func addSubviews(){
         view.addSubview(stackView)
-        stackView.addArrangedSubview(nameLabel)
-        stackView.addArrangedSubview(nameTextField)
-        stackView.addArrangedSubview(emailLabel)
-        stackView.addArrangedSubview(emailTextField)
-        stackView.addArrangedSubview(birthDaylLabel)
-        stackView.addArrangedSubview(birthTextField)
         view.addSubview(confirmButton)
     }
     
@@ -129,8 +67,29 @@ class HomeViewController: UIViewController {
             confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
     }
+    
+    private func setupLabel(text: String) -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = text
+        label.textAlignment = .left
+        label.textColor = .white
+        return label
+    }
+    
+    private func setupTextField(placeHolder: String) -> UITextField {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = placeHolder
+        textField.backgroundColor = .white
+        textField.textColor = .black
+        textField.borderStyle = .roundedRect
+        textField.font = UIFont.systemFont(ofSize: 15)
+        return textField
+    }
+    
         // Lógica para a Toobar do birthDate
-        func createToolbar() -> UIToolbar {
+       private func createToolbar() -> UIToolbar {
             //toobar
             let toolbar = UIToolbar()
             toolbar.sizeToFit()
@@ -140,7 +99,7 @@ class HomeViewController: UIViewController {
             return toolbar
         }
         
-        func createDatePicker() {
+       private func createDatePicker() {
             datePicker.preferredDatePickerStyle = .wheels
             datePicker.datePickerMode = .date
             birthTextField.inputView = datePicker
@@ -157,14 +116,8 @@ class HomeViewController: UIViewController {
         }
     
     //Validar todos os campos preenchidos
-    
     private func validadeFields() -> Bool {
-        guard let name = nameTextField.text , !name.isEmpty,
-              let email = emailTextField.text, !email.isEmpty,
-              let birthDate = birthTextField.text, !birthDate.isEmpty else {
-            return false
-        }
-        return true
+        return ![nameTextField, emailTextField, birthTextField].contains {$0.text?.isEmpty ?? true}
     }
     
     @objc private func confirmedFieldsButton(){
@@ -180,5 +133,3 @@ class HomeViewController: UIViewController {
 #Preview {
     HomeViewController()
 }
-
-//Agora Vamos testar o Upload para o repositório com um commit

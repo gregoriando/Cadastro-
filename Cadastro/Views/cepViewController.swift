@@ -179,10 +179,10 @@ class cepViewController: UIViewController {
         
         do {
             let zipCodeInfo = try await service.getZipCodes(zipCode: zipCode)
-            self.streetTextField.text =  zipCodeInfo.street
-            self.neighborhoodTextField.text = zipCodeInfo.neighborhood
-            self.cityTextField.text = zipCodeInfo.city
-            self.stateTextField.text = zipCodeInfo.state
+            streetTextField.text =  zipCodeInfo.street
+            neighborhoodTextField.text = zipCodeInfo.neighborhood
+            cityTextField.text = zipCodeInfo.city
+            stateTextField.text = zipCodeInfo.state
         } catch {
             print(" Erro ao obter informações do CEP: ", error)
         }
