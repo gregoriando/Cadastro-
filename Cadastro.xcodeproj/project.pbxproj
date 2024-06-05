@@ -64,12 +64,12 @@
 			children = (
 				3790182F2BEEC7EB00EFAF46 /* Model */,
 				3790182E2BEEC7D600EFAF46 /* Service */,
+				379018292BEC19C400EFAF46 /* Views */,
+				379018232BEC12FE00EFAF46 /* Info.plist */,
 				379018152BEC12FD00EFAF46 /* AppDelegate.swift */,
 				379018172BEC12FD00EFAF46 /* SceneDelegate.swift */,
-				379018292BEC19C400EFAF46 /* Views */,
-				3790181E2BEC12FE00EFAF46 /* Assets.xcassets */,
 				379018202BEC12FE00EFAF46 /* LaunchScreen.storyboard */,
-				379018232BEC12FE00EFAF46 /* Info.plist */,
+				3790181E2BEC12FE00EFAF46 /* Assets.xcassets */,
 			);
 			path = Cadastro;
 			sourceTree = "<group>";
