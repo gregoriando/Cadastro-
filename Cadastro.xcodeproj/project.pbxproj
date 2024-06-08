@@ -9,27 +9,31 @@
 /* Begin PBXBuildFile section */
 		379018162BEC12FD00EFAF46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379018152BEC12FD00EFAF46 /* AppDelegate.swift */; };
 		379018182BEC12FD00EFAF46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379018172BEC12FD00EFAF46 /* SceneDelegate.swift */; };
-		3790181A2BEC12FD00EFAF46 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379018192BEC12FD00EFAF46 /* HomeViewController.swift */; };
+		3790181A2BEC12FD00EFAF46 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379018192BEC12FD00EFAF46 /* RegisterUserViewController.swift */; };
 		3790181F2BEC12FE00EFAF46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3790181E2BEC12FE00EFAF46 /* Assets.xcassets */; };
 		379018222BEC12FE00EFAF46 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 379018212BEC12FE00EFAF46 /* Base */; };
-		3790182B2BED7CA000EFAF46 /* cepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3790182A2BED7CA000EFAF46 /* cepViewController.swift */; };
+		3790182B2BED7CA000EFAF46 /* CepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3790182A2BED7CA000EFAF46 /* CepViewController.swift */; };
 		3790182D2BEEC5BA00EFAF46 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3790182C2BEEC5BA00EFAF46 /* UserViewController.swift */; };
 		379018312BEEC8A800EFAF46 /* ZipCodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379018302BEEC8A800EFAF46 /* ZipCodeInfo.swift */; };
 		379018332BEEC9A500EFAF46 /* ZipCiodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379018322BEEC9A500EFAF46 /* ZipCiodeService.swift */; };
+		3792B6F92C12667400613317 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3792B6F82C12667400613317 /* CustomTextField.swift */; };
+		3792B6FC2C1266F300613317 /* ViewCodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3792B6FB2C1266F300613317 /* ViewCodeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		379018122BEC12FD00EFAF46 /* Cadastro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cadastro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		379018152BEC12FD00EFAF46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		379018172BEC12FD00EFAF46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		379018192BEC12FD00EFAF46 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		379018192BEC12FD00EFAF46 /* RegisterUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
 		3790181E2BEC12FE00EFAF46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		379018212BEC12FE00EFAF46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		379018232BEC12FE00EFAF46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3790182A2BED7CA000EFAF46 /* cepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cepViewController.swift; sourceTree = "<group>"; };
+		3790182A2BED7CA000EFAF46 /* CepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CepViewController.swift; sourceTree = "<group>"; };
 		3790182C2BEEC5BA00EFAF46 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		379018302BEEC8A800EFAF46 /* ZipCodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCodeInfo.swift; sourceTree = "<group>"; };
 		379018322BEEC9A500EFAF46 /* ZipCiodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCiodeService.swift; sourceTree = "<group>"; };
+		3792B6F82C12667400613317 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		3792B6FB2C1266F300613317 /* ViewCodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 		379018142BEC12FD00EFAF46 /* Cadastro */ = {
 			isa = PBXGroup;
 			children = (
+				3792B6FA2C1266D600613317 /* Commons */,
+				3792B6F72C12662D00613317 /* designSystem */,
 				3790182F2BEEC7EB00EFAF46 /* Model */,
 				3790182E2BEEC7D600EFAF46 /* Service */,
 				379018292BEC19C400EFAF46 /* Views */,
@@ -77,8 +83,8 @@
 		379018292BEC19C400EFAF46 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				379018192BEC12FD00EFAF46 /* HomeViewController.swift */,
-				3790182A2BED7CA000EFAF46 /* cepViewController.swift */,
+				379018192BEC12FD00EFAF46 /* RegisterUserViewController.swift */,
+				3790182A2BED7CA000EFAF46 /* CepViewController.swift */,
 				3790182C2BEEC5BA00EFAF46 /* UserViewController.swift */,
 			);
 			path = Views;
@@ -98,6 +104,22 @@
 				379018302BEEC8A800EFAF46 /* ZipCodeInfo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3792B6F72C12662D00613317 /* designSystem */ = {
+			isa = PBXGroup;
+			children = (
+				3792B6F82C12667400613317 /* CustomTextField.swift */,
+			);
+			path = designSystem;
+			sourceTree = "<group>";
+		};
+		3792B6FA2C1266D600613317 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				3792B6FB2C1266F300613317 /* ViewCodeType.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,10 +192,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3790181A2BEC12FD00EFAF46 /* HomeViewController.swift in Sources */,
+				3790181A2BEC12FD00EFAF46 /* RegisterUserViewController.swift in Sources */,
 				3790182D2BEEC5BA00EFAF46 /* UserViewController.swift in Sources */,
-				3790182B2BED7CA000EFAF46 /* cepViewController.swift in Sources */,
+				3790182B2BED7CA000EFAF46 /* CepViewController.swift in Sources */,
+				3792B6FC2C1266F300613317 /* ViewCodeType.swift in Sources */,
 				379018162BEC12FD00EFAF46 /* AppDelegate.swift in Sources */,
+				3792B6F92C12667400613317 /* CustomTextField.swift in Sources */,
 				379018312BEEC8A800EFAF46 /* ZipCodeInfo.swift in Sources */,
 				379018182BEC12FD00EFAF46 /* SceneDelegate.swift in Sources */,
 				379018332BEEC9A500EFAF46 /* ZipCiodeService.swift in Sources */,
